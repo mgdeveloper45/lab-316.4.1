@@ -11,3 +11,7 @@ function showError(message, inputElement) {
 function clearError() {
     errorDisplay.style.display = "none";
 }
+
+registerForm.addEventListener("submit", evt => {
+    evt.preventDefault();
+}) 
