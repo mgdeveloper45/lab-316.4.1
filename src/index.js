@@ -30,4 +30,10 @@ registerForm.addEventListener("submit", evt => {
     if(localStorage.getItem(username.toLowerCase())) {
         return showError("Username is already taken.", regisUsr)
     }
+    
+    const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    const regisEmail = document.getElementById("register-email")
+    if (!emailPattern.test(email) || email.endsWith("@example.com")) {
+      return showError("Email must be valid and cannot be from 'example.com'.", regisEmail);
+    }
 }) 
