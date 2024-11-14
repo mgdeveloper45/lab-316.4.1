@@ -7,3 +7,7 @@ function showError(message, inputElement) {
     errorDisplay.style.display = "flex";
     inputElement.focus();
 }
+
+function clearError() {
+    errorDisplay.style.display = "none";
+}
