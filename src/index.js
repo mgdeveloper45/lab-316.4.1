@@ -50,4 +50,13 @@ registerForm.addEventListener("submit", evt => {
         const term = document.getElementById("terms");
         return showError("You must accept the terms and conditions.", term);
     }
+
+    const userData = {
+        email: email.toLowerCase(),
+        password: password,
+      };
+      localStorage.setItem(username.toLowerCase(), JSON.stringify(userData));
+    
+      alert("Registration successful!");
+      registerForm.reset();
 }) 
