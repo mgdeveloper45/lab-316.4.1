@@ -32,17 +32,22 @@ registerForm.addEventListener("submit", evt => {
     }
     
     const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    const regisEmail = document.getElementById("register-email")
     if (!emailPattern.test(email) || email.endsWith("@example.com")) {
-      return showError("Email must be valid and cannot be from 'example.com'.", regisEmail);
+        const regisEmail = document.getElementById("register-email")
+        return showError("Email must be valid and cannot be from 'example.com'.", regisEmail);
     }
 
     const passwordPattern = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{12,}$/;
     const regisPassCheck = document.getElementById("register-password");
-  if (!passwordPattern.test(password) || password.toLowerCase().includes("password") || password.includes(username)) {
-    return showError("Password must be 12 characters, contain uppercase, lowercase, number, special character, and cannot contain 'password' or your username.", regisPassCheck);
-  }
-  if (password !== passwordCheck) {
-    return showError("Passwords must match.", regisPassCheck);
-  }
+    if (!passwordPattern.test(password) || password.toLowerCase().includes("password") || password.includes(username)) {
+        return showError("Password must be 12 characters, contain uppercase, lowercase, number, special character, and cannot contain 'password' or your username.", regisPassCheck);
+    }
+    if (password !== passwordCheck) {
+        return showError("Passwords must match.", regisPassCheck);
+    }
+
+    if (!termsAccepted) {
+        const term = document.getElementById("terms");
+        return showError("You must accept the terms and conditions.", term);
+    }
 }) 
