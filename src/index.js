@@ -36,4 +36,13 @@ registerForm.addEventListener("submit", evt => {
     if (!emailPattern.test(email) || email.endsWith("@example.com")) {
       return showError("Email must be valid and cannot be from 'example.com'.", regisEmail);
     }
+
+    const passwordPattern = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{12,}$/;
+    const regisPassCheck = document.getElementById("register-password");
+  if (!passwordPattern.test(password) || password.toLowerCase().includes("password") || password.includes(username)) {
+    return showError("Password must be 12 characters, contain uppercase, lowercase, number, special character, and cannot contain 'password' or your username.", regisPassCheck);
+  }
+  if (password !== passwordCheck) {
+    return showError("Passwords must match.", regisPassCheck);
+  }
 }) 
