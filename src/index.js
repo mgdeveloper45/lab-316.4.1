@@ -59,4 +59,13 @@ registerForm.addEventListener("submit", evt => {
     
       alert("Registration successful!");
       registerForm.reset();
-}) 
+})
+
+loginForm.addEventListener("submit", (event) => {
+    event.preventDefault();
+    clearError();
+  
+    const username = document.getElementById("login-username").value.trim().toLowerCase();
+    const password = document.getElementById("login-password").value;
+    const persistLogin = document.getElementById("persist").checked;
+  });
