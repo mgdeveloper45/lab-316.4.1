@@ -68,4 +68,12 @@ loginForm.addEventListener("submit", (event) => {
     const username = document.getElementById("login-username").value.trim().toLowerCase();
     const password = document.getElementById("login-password").value;
     const persistLogin = document.getElementById("persist").checked;
+
+    const user = JSON.parse(localStorage.getItem(username));
+    if (!user) {
+      return showError("Username does not exist.", document.getElementById("login-username"));
+    }
+    if (user.password !== password) {
+      return showError("Incorrect password.", document.getElementById("login-password"));
+    }
   });
