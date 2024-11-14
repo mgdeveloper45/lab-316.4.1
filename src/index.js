@@ -1,5 +1,4 @@
 const registerForm = document.getElementById("registration");
-console.log(registerForm)
 const loginForm = document.getElementById("login");
 const errorDisplay = document.getElementById("errorDisplay");
 
@@ -22,4 +21,13 @@ registerForm.addEventListener("submit", evt => {
     const password = document.getElementById("register-password").value;
     const passwordCheck = document.getElementById("register-password-check").value;
     const termsAccepted = document.getElementById("terms").checked;
+
+    const usernamePattern = /^[A-Za-z0-9]+$/;
+    const regisUsr = document.getElementById("register-username")
+    if(username === "" || username.length < 4 || !usernamePattern.test(username) || new Set(username).size < 2) {
+        return showError("Username must be at least 4 characters, 2 unique characters and no special characters.", regisUsr)
+    }
+    if(localStorage.getItem(username.toLowerCase())) {
+        return showError("Username is already taken.", regisUsr)
+    }
 }) 
